@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleLoadInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading-bar'
 import { Switch, Route, Redirect, useParams, BrowserRouter as Router } from 'react-router-dom'
+import Login from './Login'
 
 export class App extends Component {
   componentDidMount () {
@@ -41,7 +42,7 @@ export class App extends Component {
                   <h1>Leaderboard</h1>
                 </Route>
                 <Route path="/login">
-                  <h1>Login</h1>
+                  <Login />
                 </Route>
                 <Route path="/">
                   <h1>Home</h1>

@@ -1,8 +1,8 @@
 import {_getUsers, _getQuestions} from '../utils/_DATA'
-import {setAuthedUser} from './authedUser'
 import {handleAddQuestion, handleAnswerQuestion} from './questions'
 import {showLoading, hideLoading} from 'react-redux-loading-bar'
 import {startLoading, finishLoading } from './loading'
+import { setAuthedUser } from './authedUser'
 
 export const LOAD_INITIAL_DATA = 'LOAD_INITIAL_DATA'
 
@@ -21,7 +21,8 @@ export function handleLoadInitialData () {
         dispatch(showLoading())
         return Promise.all([_getUsers(), _getQuestions()]).then(values => {
            dispatch(loadInitialData({users: values[0], questions: values[1]}))
-           //dispatch(setAuthedUser("sarahedo"))
+           const authedUser = localStorage.getItem("authedUser")
+           authedUser && dispatch(setAuthedUser(authedUser))
            //dispatch(handleAddQuestion({optionOneText:"Be happy", optionTwoText: "Be sad"}))
            //dispatch(handleAnswerQuestion({qid: "am8ehyc8byjqgar0jgpub9", answer: "optionOne"}))
            dispatch(finishLoading())
