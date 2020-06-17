@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleLoadInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading-bar'
-import { Switch, Route, Redirect, useParams, BrowserRouter as Router } from 'react-router-dom'
+import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
 import Login from './Login'
+import Leaderboard from './Leaderboard'
 
 export class App extends Component {
   componentDidMount () {
@@ -19,9 +20,7 @@ export class App extends Component {
               <Route 
                 path="*" 
                 render={({location}) => {
-                  console.log(location)
                   if (!(authedUser || location.pathname === "/login")) {
-                    console.log("redirecting")
                     return (
                       <Redirect 
                         to={{
@@ -39,7 +38,7 @@ export class App extends Component {
                   <h1>Add question</h1>
                 </Route>
                 <Route path="/leaderboard">
-                  <h1>Leaderboard</h1>
+                  <Leaderboard />
                 </Route>
                 <Route path="/login">
                   <Login />
