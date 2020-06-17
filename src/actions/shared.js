@@ -1,4 +1,6 @@
-import {_getUsers, _getQuestions, _saveQuestion} from '../utils/_DATA'
+import {_getUsers, _getQuestions} from '../utils/_DATA'
+import {setAuthedUser} from './authedUser'
+import {handleAddQuestion, handleAnswerQuestion} from './questions'
 
 export const LOAD_INITIAL_DATA = 'LOAD_INITIAL_DATA'
 
@@ -15,26 +17,9 @@ export function handleLoadInitialData () {
     return (dispatch, getState) => {
         return Promise.all([_getUsers(), _getQuestions()]).then(values => {
            dispatch(loadInitialData({users: values[0], questions: values[1]}))
+           dispatch(setAuthedUser("sarahedo"))
+           dispatch(handleAddQuestion({optionOneText:"Be happy", optionTwoText: "Be sad"}))
+           dispatch(handleAnswerQuestion({qid: "am8ehyc8byjqgar0jgpub9", answer: "optionOne"}))
         }).catch(console.log)
-    }
-}
-
-export const ADD_QUESTION = "ADD_QUESTION"
-
-function addQuestion (question) {
-    return {
-        type: ADD_QUESTION,
-        payload: {
-            question
-        }
-    }
-}
-
-export function handleAddQuestion (question) {
-    return (dispatch, getState) => {
-        const {authedUser} = getState()
-        return _saveQuestion({...question, author: authedUser}).then(formattedQuestion => {
-            dispatch(addQuestion(formattedQuestion))
-        })
     }
 }
