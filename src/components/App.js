@@ -8,6 +8,7 @@ import Leaderboard from './Leaderboard'
 import Dashboard from './Dashboard'
 import Question from './Question'
 import Navbar from './Navbar'
+import AddQuestion from './AddQuestion'
 
 export function App (props) {
   const {authedUser, loading, handleLoadInitialData} = props
@@ -35,7 +36,7 @@ export function App (props) {
                 <Question />
               </Route>
               <Route path="/add">
-                <h1>Add question</h1>
+                <AddQuestion />
               </Route>
               <Route path="/leaderboard">
                 <Leaderboard />
