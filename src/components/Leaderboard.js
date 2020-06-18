@@ -13,13 +13,13 @@ export class Leaderboard extends Component {
     leaderboard.sort((a,b) => a - b)
     return (
       <div>
-        <ul> 
+        <ol> 
           {leaderboard.map(user => (
             <li key={user.name}>
               <span>{user.name}</span><span>, Score: {user.score}</span>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     )
   }
