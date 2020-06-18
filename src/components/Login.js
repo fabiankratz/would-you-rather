@@ -1,41 +1,56 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {setAuthedUser} from '../actions/authedUser'
 import {Redirect, Route} from 'react-router-dom'
+import UserSelect from './UserSelect'
 
 export function Login (props) {
-  const {users, authedUser, setAuthedUser} = props
-  const handleSetAuthedUser = (e, id) => {
-    e.preventDefault()
-    setAuthedUser(id)
+  const {users, authedUser} = props
+  if (authedUser) {
+    return (
+      <Route 
+        path="/login" 
+        render={({location}) => {
+            return (
+              <Redirect 
+                to={{
+                  pathname: location.state ? location.state.from.pathname : "/",
+                  state: { from: location }
+                }} />
+            )
+          }}
+      />)
+  } else {
+    return (
+      <div style={{
+        display: "grid",
+        justifyContent: "center",
+        margin: "2em",}}>
+        <h1>Would you rather log in as ...?</h1>
+        <ul style={{listStyle: "none", cursor:"pointer"}}>
+          {Object.keys(users).map((id, index, arr) => {
+            return (
+              <li key={id} style={{position: "relative"}}>
+                <UserSelect id={id}/>
+                {index < arr.length-1 && (
+                  <p 
+                    style={{
+                      backgroundColor: "white",
+                      position: "absolute",
+                      bottom: "-1.5em",
+                      textAlign: "center",
+                      left: "calc(50% - 20px)",
+                      border: "1px solid black",
+                      padding: "0 0.2em",
+                      borderRadius: "50%",
+                      zIndex: "100"
+                    }}>or</p>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+      </div>)
   }
-  return (
-    <div>
-      { authedUser && (
-        <Route 
-          path="/login" 
-          render={({location}) => {
-              return (
-                <Redirect 
-                  to={{
-                    pathname: location.state ? location.state.from.pathname : "/",
-                    state: { from: location }
-                  }} />
-              )
-            }}
-        />
-      )}
-      <ul>
-        {Object.keys(users).map(id => {
-          return (
-            <li key={id}>
-              <button onClick={(e) => handleSetAuthedUser(e, id)}>{users[id].name}</button>
-            </li>
-          )
-        })}
-      </ul>
-    </div>
-  )
 }
 
 const mapStateToProps = ({users, authedUser}, props) => ({
@@ -44,8 +59,4 @@ const mapStateToProps = ({users, authedUser}, props) => ({
   ...props
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  setAuthedUser: (id) => dispatch(setAuthedUser(id))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps)(Login)

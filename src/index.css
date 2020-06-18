@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 * {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: 'Gochi Hand', cursive;
+}
+
+.userImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+}
+
+.user:hover {
+  background-color: rgb(245, 255, 231);
 }

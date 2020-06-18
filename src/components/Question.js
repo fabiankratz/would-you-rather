@@ -12,7 +12,7 @@ export const Question = (props) => {
   if (question) {
     const handleAnswerQuestion = (e) => {
       e.preventDefault()
-      answerQuestion({qid, answer: selectedOption})
+      selectedOption && answerQuestion({qid, answer: selectedOption})
     }
     const opt1Votes = question.optionOne.votes.length
     const opt2Votes = question.optionTwo.votes.length

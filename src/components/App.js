@@ -27,7 +27,7 @@ export function App (props) {
               )}
             />
           : <div className="container">
-              <Header />
+              {location.pathname !== "/login" && <Header />}
               <MainContent />
             </div>
               )
