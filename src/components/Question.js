@@ -31,7 +31,7 @@ export const Question = (props) => {
             onChange={(e) => setSelectedOption(e.target.value)}
             checked={selectedOption === "optionOne"}
           />
-          <label htmlFor="optionOneRadio">{question.optionOne.text} ? {answer && `|| ${(opt1Votes/totalVotes)*100}% (${opt1Votes})`}</label>
+          <label htmlFor="optionOneRadio">{question.optionOne.text} ? {answer && `|| ${Math.round((opt1Votes/totalVotes)*100)}% (${opt1Votes})`}</label>
           <input 
             type="radio" 
             id="optionTwoRadio" 
@@ -41,7 +41,7 @@ export const Question = (props) => {
             onChange={(e) => setSelectedOption(e.target.value)}
             checked={selectedOption === "optionTwo"}
           />
-          <label htmlFor="optionTwoRadio">{question.optionTwo.text} ? {answer && `|| ${(opt2Votes/totalVotes)*100}% (${opt2Votes})`}</label>
+          <label htmlFor="optionTwoRadio">{question.optionTwo.text} ? {answer && `|| ${Math.round((opt2Votes/totalVotes)*100)}% (${opt2Votes})`}</label>
           <input type="submit" value="Submit" disabled={answer ? true : false}/>
         </form>
       </div>

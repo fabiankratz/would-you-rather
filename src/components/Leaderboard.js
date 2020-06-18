@@ -5,9 +5,13 @@ export class Leaderboard extends Component {
   render() {
     const {users} = this.props
     const leaderboard = Object.keys(users).map(id => {
+      const questionsAnswered = Object.keys(users[id].answers).length
+      const questionsAsked = users[id].questions.length
       return {
         name: users[id].name,
-        score: users[id].questions.length + Object.keys(users[id].answers).length
+        questionsAnswered,
+        questionsAsked,
+        score: questionsAsked + questionsAnswered
       }
     })
     leaderboard.sort((a,b) => a - b)
@@ -16,7 +20,10 @@ export class Leaderboard extends Component {
         <ol> 
           {leaderboard.map(user => (
             <li key={user.name}>
-              <span>{user.name}</span><span>, Score: {user.score}</span>
+              <p>{user.name}</p>
+              <p>Score: {user.score}</p>
+              <p>Questions answered: {user.questionsAnswered}</p>
+              <p>Questions asked: {user.questionsAsked}</p>
             </li>
           ))}
         </ol>
