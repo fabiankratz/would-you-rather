@@ -6,11 +6,12 @@ import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
 import Dashboard from './Dashboard'
+import Question from './Question'
 
 export function App (props) {
-  useEffect(() => {props.handleLoadInitialData()}, [])
+  const {authedUser, loading, handleLoadInitialData} = props
+  useEffect(() => {handleLoadInitialData()}, [handleLoadInitialData])
   const location = useLocation()
-  const {authedUser, loading } = props
   const doRedirect = !(authedUser || location.pathname === "/login")
   return (
     <React.Fragment>
@@ -28,9 +29,9 @@ export function App (props) {
               )}
             />
           : <Switch>
-              <Route path="/question/:qid" render={({match}) => (
-                <h1>Question {match.params.qid}</h1>
-              )}/>
+              <Route path="/question/:qid">
+                <Question />
+              </Route>
               <Route path="/add">
                 <h1>Add question</h1>
               </Route>
