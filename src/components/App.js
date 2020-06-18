@@ -7,6 +7,7 @@ import Login from './Login'
 import Leaderboard from './Leaderboard'
 import Dashboard from './Dashboard'
 import Question from './Question'
+import Navbar from './Navbar'
 
 export function App (props) {
   const {authedUser, loading, handleLoadInitialData} = props
@@ -16,6 +17,7 @@ export function App (props) {
   return (
     <React.Fragment>
       <LoadingBar />
+      <Navbar />
         { !loading && (
           doRedirect
           ? <Route 
