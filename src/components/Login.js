@@ -1,44 +1,41 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import {handleSaveAuthedUser} from '../actions/authedUser'
+import {setAuthedUser} from '../actions/authedUser'
 import {Redirect, Route} from 'react-router-dom'
 
-export class Login extends Component {
-  handleSaveAuthedUser (e, id) {
+export function Login (props) {
+  const {users, authedUser, setAuthedUser} = props
+  const handleSetAuthedUser = (e, id) => {
     e.preventDefault()
-    this.props.handleSaveAuthedUser(id)
-
+    setAuthedUser(id)
   }
-  render() {
-    const {users, authedUser} = this.props
-    return (
-      <div>
-        { authedUser && (
-          <Route 
-            path="/login" 
-            render={({location}) => {
-                return (
-                  <Redirect 
-                    to={{
-                      pathname: location.state.from.pathname,
-                      state: { from: location }
-                    }} />
-                )
-              }}
-          />
-        )}
-        <ul>
-          {Object.keys(users).map(id => {
-            return (
-              <li key={id}>
-                <button onClick={(e) => this.handleSaveAuthedUser(e, id)}>{users[id].name}</button>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    )
-  }
+  return (
+    <div>
+      { authedUser && (
+        <Route 
+          path="/login" 
+          render={({location}) => {
+              return (
+                <Redirect 
+                  to={{
+                    pathname: location.state ? location.state.from.pathname : "/",
+                    state: { from: location }
+                  }} />
+              )
+            }}
+        />
+      )}
+      <ul>
+        {Object.keys(users).map(id => {
+          return (
+            <li key={id}>
+              <button onClick={(e) => handleSetAuthedUser(e, id)}>{users[id].name}</button>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
 }
 
 const mapStateToProps = ({users, authedUser}, props) => ({
@@ -48,7 +45,7 @@ const mapStateToProps = ({users, authedUser}, props) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  handleSaveAuthedUser: (id) => dispatch(handleSaveAuthedUser(id))
+  setAuthedUser: (id) => dispatch(setAuthedUser(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

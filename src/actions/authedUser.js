@@ -8,10 +8,3 @@ export function setAuthedUser (id) {
         }
     }
 }
-
-export function handleSaveAuthedUser (id) {
-    return (dispatch) => {
-        localStorage.setItem("authedUser", id)
-        dispatch(setAuthedUser(id))
-    }
-}
