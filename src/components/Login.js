@@ -24,27 +24,22 @@ export function Login (props) {
       <div style={{
         display: "grid",
         justifyContent: "center",
-        margin: "2em",}}>
+        margin: "2em",
+        }}>
         <h1>Would you rather log in as ...?</h1>
-        <ul style={{listStyle: "none", cursor:"pointer"}}>
+        <ul style={{
+          margin: "0",
+          padding: "0",
+          border: "3px solid teal",
+          borderRadius: "10px",
+          listStyle: "none", 
+          cursor:"pointer", 
+          boxShadow: "10px 10px 19px -10px teal"
+        }}>
           {Object.keys(users).map((id, index, arr) => {
             return (
               <li key={id} style={{position: "relative"}}>
-                <UserSelect id={id}/>
-                {index < arr.length-1 && (
-                  <p 
-                    style={{
-                      backgroundColor: "white",
-                      position: "absolute",
-                      bottom: "-1.5em",
-                      textAlign: "center",
-                      left: "calc(50% - 20px)",
-                      border: "1px solid black",
-                      padding: "0 0.2em",
-                      borderRadius: "50%",
-                      zIndex: "100"
-                    }}>or</p>
-                )}
+                <UserSelect id={id} lastListItem={!(index < arr.length-1)}/>
               </li>
             )
           })}
