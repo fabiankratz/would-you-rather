@@ -20,21 +20,10 @@ export const UserSelect = (props) => {
           src={user.avatarURL}
           className="userImg"
         />
-        <p>{user.name} <span style={{color: "green"}}>@{user.id}</span></p>
+        <p>{user.name} <span className="user-id">@{user.id}</span></p>
       </div>
       {!lastListItem && (
-        <p 
-          style={{
-            backgroundColor: "white",
-            position: "absolute",
-            bottom: "-1.5em",
-            textAlign: "center",
-            left: "calc(50% - 20px)",
-            border: "1px solid black",
-            padding: "0 0.2em",
-            borderRadius: "50%",
-            zIndex: "100"
-          }}>or</p>
+        <p className="or">or</p>
       )}
     </div>
   )

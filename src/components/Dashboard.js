@@ -11,7 +11,7 @@ export function Dashboard (props) {
       return !Object.keys(users[authedUser].answers).some(a => a === q)
     })
   return (
-    <div>
+    <div className="dashboard">
       <button onClick={() => setShowAnswered(!showAnswered)}>{showAnswered ? "Show unanswered" : "Show answered"}</button>
       <ul>
         {qids.map(id => (

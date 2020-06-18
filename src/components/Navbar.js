@@ -11,14 +11,14 @@ export const Navbar = (props) => {
   }
   return (
     <nav>
-      <NavLink to="/">
-        Home
+      <NavLink exact to="/" >
+        <button className="nav-link">Home</button>
       </NavLink>
-      <NavLink to="/leaderboard">
-        Leaderboard
+      <NavLink exact to="/leaderboard">
+        <button className="nav-link">Leaderboard</button>
       </NavLink>
-      <NavLink to="/add">
-        New poll
+      <NavLink exact to="/add">
+        <button className="nav-link">New poll</button>
       </NavLink>
       {authedUser && <button onClick={(e) => handleLogout(e)}>Logout</button>}
   </nav>

@@ -27,15 +27,7 @@ export function Login (props) {
         margin: "2em",
         }}>
         <h1>Would you rather log in as ...?</h1>
-        <ul style={{
-          margin: "0",
-          padding: "0",
-          border: "3px solid teal",
-          borderRadius: "10px",
-          listStyle: "none", 
-          cursor:"pointer", 
-          boxShadow: "10px 10px 19px -10px teal"
-        }}>
+        <ul className="userList">
           {Object.keys(users).map((id, index, arr) => {
             return (
               <li key={id} style={{position: "relative"}}>
