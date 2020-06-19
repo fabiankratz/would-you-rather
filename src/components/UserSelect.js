@@ -1,42 +1,42 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import {setAuthedUser} from '../actions/authedUser'
+import React from "react";
+import { connect } from "react-redux";
+import { setAuthedUser } from "../actions/authedUser";
 
 export const UserSelect = (props) => {
-  const {setAuthedUser, id, users, lastListItem} = props
+  const { setAuthedUser, id, users, lastListItem } = props;
   const handleSetAuthedUser = (e, id) => {
-    e.preventDefault()
-    setAuthedUser(id)
-  }
-  const user = users[id]
+    e.preventDefault();
+    setAuthedUser(id);
+  };
+  const user = users[id];
   return (
     <div>
       <div
-      onClick={(e) => handleSetAuthedUser(e, id)}
-      className="user"
-      style={{borderBottom: lastListItem ? "" : "1px solid grey"}}
+        onClick={(e) => handleSetAuthedUser(e, id)}
+        className="user"
+        style={{ borderBottom: lastListItem ? "" : "1px solid grey" }}
       >
-        <img 
+        <img
           src={user.avatarURL}
           className="userImg"
           alt={`${user.name}'s avatar`}
         />
-        <p>{user.name} <span className="user-id">@{user.id}</span></p>
+        <p>
+          {user.name} <span className="user-id">@{user.id}</span>
+        </p>
       </div>
-      {!lastListItem && (
-        <p className="or">or</p>
-      )}
+      {!lastListItem && <p className="or">or</p>}
     </div>
-  )
-}
+  );
+};
 
-const mapStateToProps = ({users}, props) => ({
+const mapStateToProps = ({ users }, props) => ({
   users,
-  ...props
-})
+  ...props,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  setAuthedUser: (id) => dispatch(setAuthedUser(id))
-})
+  setAuthedUser: (id) => dispatch(setAuthedUser(id)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSelect)
+export default connect(mapStateToProps, mapDispatchToProps)(UserSelect);

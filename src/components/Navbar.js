@@ -1,17 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import {NavLink} from 'react-router-dom'
-import {logout} from '../actions/authedUser'
+import React from "react";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { logout } from "../actions/authedUser";
 
 export const Navbar = (props) => {
-  const {logout, authedUser} = props
+  const { logout, authedUser } = props;
   const handleLogout = (e) => {
-    e.preventDefault()
-    logout()
-  }
+    e.preventDefault();
+    logout();
+  };
   return (
     <nav>
-      <NavLink exact to="/" >
+      <NavLink exact to="/">
         <button className="nav-link">Home</button>
       </NavLink>
       <NavLink exact to="/leaderboard">
@@ -20,17 +20,19 @@ export const Navbar = (props) => {
       <NavLink exact to="/add">
         <button className="nav-link">New poll</button>
       </NavLink>
-      {authedUser && <button onClick={(e) => handleLogout(e)}>Logout</button>}
-  </nav>
-  )
-}
+      {authedUser && (
+        <button onClick={(e) => handleLogout(e)}>Logout (@{authedUser})</button>
+      )}
+    </nav>
+  );
+};
 
-const mapStateToProps = ({authedUser}) => ({
-  authedUser
-})
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout())
-})
+  logout: () => dispatch(logout()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

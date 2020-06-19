@@ -1,10 +1,10 @@
-import React from 'react'
-import {Route, Switch } from 'react-router-dom'
-import Login from './Login'
-import Leaderboard from './Leaderboard'
-import Dashboard from './Dashboard'
-import Question from './Question'
-import AddQuestion from './AddQuestion'
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Login from "./Login";
+import Leaderboard from "./Leaderboard";
+import Dashboard from "./Dashboard";
+import Question from "./Question";
+import AddQuestion from "./AddQuestion";
 
 export default function MainContent() {
   return (
@@ -25,5 +25,5 @@ export default function MainContent() {
         <Dashboard />
       </Route>
     </Switch>
-  )
+  );
 }

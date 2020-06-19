@@ -1,27 +1,34 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 export class Leaderboard extends Component {
   render() {
-    const {users} = this.props
-    const leaderboard = Object.keys(users).map(id => {
-      const questionsAnswered = Object.keys(users[id].answers).length
-      const questionsAsked = users[id].questions.length
+    const { users } = this.props;
+    const leaderboard = Object.keys(users).map((id) => {
+      const questionsAnswered = Object.keys(users[id].answers).length;
+      const questionsAsked = users[id].questions.length;
       return {
-        name: users[id].name,
+        ...users[id],
         questionsAnswered,
         questionsAsked,
-        score: questionsAsked + questionsAnswered
-      }
-    })
-    leaderboard.sort((a,b) => a - b)
+        score: questionsAsked + questionsAnswered,
+      };
+    });
+    leaderboard.sort((a, b) => b.score - a.score);
     return (
       <div className="dashboard">
-        <ol> 
-          {leaderboard.map((user,index) => (
+        <ol>
+          {leaderboard.map((user, index) => (
             <li key={user.name}>
               <div className="card">
-                <h3>{index+1}. {user.name}</h3>
+                <img
+                  src={user.avatarURL}
+                  className="card__img"
+                  alt={`${user.name}'s avatar`}
+                />
+                <h3>
+                  {index + 1}. {user.name}
+                </h3>
                 <p>Score: {user.score}</p>
                 <p>Questions answered: {user.questionsAnswered}</p>
                 <p>Questions asked: {user.questionsAsked}</p>
@@ -30,16 +37,14 @@ export class Leaderboard extends Component {
           ))}
         </ol>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = ({users}) => ({
-  users
-})
+const mapStateToProps = ({ users }) => ({
+  users,
+});
 
-const mapDispatchToProps = {
-  
-}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);

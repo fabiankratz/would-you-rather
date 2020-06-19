@@ -1,15 +1,15 @@
-export const FINISH_LOADING = "FINISH_LOADING"
+export const FINISH_LOADING = "FINISH_LOADING";
 
-export function finishLoading () {
+export function finishLoading() {
   return {
-    type: FINISH_LOADING
-  }
+    type: FINISH_LOADING,
+  };
 }
 
-export const START_LOADING = "START_LOADING"
+export const START_LOADING = "START_LOADING";
 
-export function startLoading () {
+export function startLoading() {
   return {
-    type: START_LOADING
-  }
+    type: START_LOADING,
+  };
 }

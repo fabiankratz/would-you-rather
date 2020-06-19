@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
 * {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -120,7 +121,7 @@ nav > button {
   border: 3px solid teal;
   border-radius: 10px;
   list-style: none;
-  cursor:pointer;
+  cursor: pointer;
   box-shadow: 10px 10px 19px -10px teal;
 }
 
@@ -128,7 +129,8 @@ nav > button {
   color: green;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
   padding: 0;
 }
@@ -158,8 +160,16 @@ ul, ol {
   color: blue;
 }
 
-h1,h2,h3,h4,h5,h6, a, button {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+button {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .card__text {
@@ -185,7 +195,7 @@ h1,h2,h3,h4,h5,h6, a, button {
   border: 2px solid green;
 }
 
-input[type="radio"][disabled][checked] ~ label{
+input[type="radio"][disabled][checked] ~ label {
   text-decoration: underline;
   text-decoration-color: blue;
 }
@@ -194,9 +204,12 @@ input[type="radio"][disabled][checked] ~ label{
   display: inline-block;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 700px) {
   nav {
     flex-direction: column;
-    height: 150px;
+    height: 180px;
+  }
+  nav > button {
+    position: static;
   }
 }
