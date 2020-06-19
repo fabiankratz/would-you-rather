@@ -10,6 +10,7 @@ Then, install the dependencies with `npm install` or `yarn install`.
 
 # Usage
 To start a local server which will be accessible in your browser at [localhost:3000](http://localhost:3000), execute the command `yarn start` or `npm start`.
+**HINT**: The store is preconfigured to use React DevTools Browser extension!
 
 The following endpoints will be exposed by the server:
 * [localhost:3000/](http://localhost:3000/) - Dashboard showing (un)answered questions
