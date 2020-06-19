@@ -16,11 +16,15 @@ export function Dashboard (props) {
       <ul>
         {qids.map(id => (
           <li key={id}>
-            <h3>{users[questions[id].author].name} asks: </h3>
-            <p>Would you rather?</p>
-            <p>...{questions[id].optionOne.text.slice(0, 15)}...</p>
-            <Link to={`/question/${id}`}>
-              <button>Answer</button>
+            <Link to={`/question/${id}`} className="card__link">
+              <div className="card">
+                <img src={users[questions[id].author].avatarURL} className="card__img"/>
+                <h3 className="card__header">{users[questions[id].author].name} asks: </h3>
+                <div className="card__text">
+                  <p>Would you rather?</p>
+                  <p>...{questions[id].optionOne.text.slice(0, 15)}...</p>
+                </div>
+              </div>
             </Link>
           </li>
         ))}

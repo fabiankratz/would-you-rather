@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 * {
-  font-family: 'Gochi Hand', cursive;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   box-sizing: border-box;
 }
 
@@ -56,11 +56,13 @@ nav {
   position: relative;
   top: 0;
   width: 100%;
-  background-color: #eee;
+  box-sizing: border-box;
+  border-bottom: 10px double rgb(172, 195, 172);
   height: 3em;
   display: flex;
   align-items: center;
-  padding: 0 1em;
+  padding: 1.5em 1em;
+  margin-bottom: 1em;
 }
 
 nav > button {
@@ -111,4 +113,56 @@ nav > button {
 
 .user-id {
   color: green;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  border: 1px solid grey;
+  box-shadow: 10px 10px 19px -10px rgb(185, 185, 185);
+  padding: 1em 2em;
+  width: 100%;
+  border-radius: 15px;
+  margin: 0.5em 0;
+}
+
+.card:hover {
+  color: blue;
+  cursor: pointer;
+  transform: scale(1.02);
+  box-shadow: 10px 10px 19px -10px rgb(119, 118, 118);
+}
+
+.card__link {
+  text-decoration: none;
+  color: black;
+}
+
+.card__link:hover {
+  color: blue;
+}
+
+h1,h2,h3,h4,h5,h6, a, button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.card__text {
+  color: rgb(79, 95, 79);
+}
+
+.card__img {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  right: 10px;
+}
+
+.card__header {
+  display: inline-block;
 }
