@@ -18,7 +18,7 @@ export function Dashboard (props) {
           <li key={id}>
             <Link to={`/question/${id}`} className="card__link">
               <div className="card">
-                <img src={users[questions[id].author].avatarURL} className="card__img"/>
+                <img src={users[questions[id].author].avatarURL} className="card__img" alt={`${users[questions[id].author].name}'s avatar`}/>
                 <h3 className="card__header">{users[questions[id].author].name} asks: </h3>
                 <div className="card__text">
                   <p>Would you rather?</p>

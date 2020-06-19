@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
 
@@ -19,6 +19,7 @@ export const UserSelect = (props) => {
         <img 
           src={user.avatarURL}
           className="userImg"
+          alt={`${user.name}'s avatar`}
         />
         <p>{user.name} <span className="user-id">@{user.id}</span></p>
       </div>

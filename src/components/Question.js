@@ -19,7 +19,14 @@ export const Question = (props) => {
     const totalVotes = opt1Votes + opt2Votes
     return (
       <div className="dashboard">
-        <img src={users[question.author].avatarURL} alt={`avatar for ${users[question.author].name}`} width="50" height="50"/>
+        <div>
+          <img 
+            src={users[question.author].avatarURL} 
+            alt={`avatar for ${users[question.author].name}`} 
+            width="50" 
+            height="50"/>
+          <h3>{users[question.author].name} asks:</h3>
+        </div>
         <h1>Would you rather...</h1>
         <form onSubmit={(e) => handleAnswerQuestion(e)}>
           <div className="form-group">
