@@ -1,68 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction
+This is a in-browser implementation of the popular game "Would you rather ...?".
+Players can log in as one of three predefined users and answer, create as well as view polls.
+After selecting an option, the user is shown a statistic of how other people voted on this paricular question.
+It stores the game state locally, so progress will be lost on page refresh.
 
-## Available Scripts
+# Installation
+Make sure you have **npm** or **yarn** installed, then clone this repository and `cd` into the root folder.
+Then, install the dependencies with `npm install` or `yarn install`.
 
-In the project directory, you can run:
+# Usage
+To start a local server which will be accessible in your browser at [localhost:3000](localhost:3000), execute the command `yarn start` or `npm start`.
 
-### `yarn start`
+The following endpoints will be exposed by the server:
+* [localhost:3000/](localhost:3000/) - Dashboard showing (un)answered questions
+* [localhost:3000/login](localhost:3000/login) - You can manually login at this URL, but you will be redirected to it from any other URL if you haven't signed in yet
+* [localhost:3000/add](localhost:3000/add) - Add a new poll
+* [localhost:3000/leaderboard](localhost:3000/leaderboard) - Leaderboard, user ranking based on score (num of answered polls + num of unanswered polls)
+* [localhost:3000/question/:qid](localhost:3000/question/:qid) - Question details where **qid** is the question id
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# About
+This project was created for the react nanodegree program focussing on react + redux.
