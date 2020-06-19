@@ -16,13 +16,20 @@ export const AddQuestion = (props) => {
   return (
     <div>
       {redirect && <Redirect to="/" /> }
-      <form onSubmit={(e) => handleAddQuestion(e)}>
-        <label htmlFor="optionOneTextInput">Option One: </label>
-        <input type="text" id="optionOneTextInput" onChange={(e) => setOptionOneText(e.target.value)} />
-        <label htmlFor="optionTwoTextInput">Option Two: </label>
-        <input type="text" id="optionTwoTextInput" onChange={(e) => setOptionTwoText(e.target.value)} />
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="dashboard">
+        <h1>Would you rather...?</h1>
+        <form onSubmit={(e) => handleAddQuestion(e)}>
+          <div className="form-group">
+            <label htmlFor="optionOneTextInput">Option One: </label>
+            <input type="text" id="optionOneTextInput" onChange={(e) => setOptionOneText(e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="optionTwoTextInput">Option Two: </label>
+            <input type="text" id="optionTwoTextInput" onChange={(e) => setOptionTwoText(e.target.value)} />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   )
 }

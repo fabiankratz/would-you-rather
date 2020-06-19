@@ -16,14 +16,16 @@ export class Leaderboard extends Component {
     })
     leaderboard.sort((a,b) => a - b)
     return (
-      <div>
+      <div className="dashboard">
         <ol> 
-          {leaderboard.map(user => (
+          {leaderboard.map((user,index) => (
             <li key={user.name}>
-              <p>{user.name}</p>
-              <p>Score: {user.score}</p>
-              <p>Questions answered: {user.questionsAnswered}</p>
-              <p>Questions asked: {user.questionsAsked}</p>
+              <div className="card">
+                <h3>{index+1}. {user.name}</h3>
+                <p>Score: {user.score}</p>
+                <p>Questions answered: {user.questionsAnswered}</p>
+                <p>Questions asked: {user.questionsAsked}</p>
+              </div>
             </li>
           ))}
         </ol>

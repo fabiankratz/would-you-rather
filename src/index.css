@@ -52,6 +52,19 @@ button:active {
   background-color: rgb(237, 249, 255);
 }
 
+button[disabled] {
+  background-color: #eee;
+}
+
+.statistic {
+  background-color: rgb(55, 136, 74);
+  color: white;
+  padding: 0.3em;
+  margin-left: 0.3em;
+  border-radius: 10px;
+  text-decoration: none !important;
+}
+
 nav {
   position: relative;
   top: 0;
@@ -163,6 +176,27 @@ h1,h2,h3,h4,h5,h6, a, button {
   right: 10px;
 }
 
+.form-group {
+  display: block;
+  padding: 1em 0;
+}
+
+.form-group > input[type="radio"]:checked {
+  border: 2px solid green;
+}
+
+input[type="radio"][disabled][checked] ~ label{
+  text-decoration: underline;
+  text-decoration-color: blue;
+}
+
 .card__header {
   display: inline-block;
+}
+
+@media (max-width: 400px) {
+  nav {
+    flex-direction: column;
+    height: 150px;
+  }
 }

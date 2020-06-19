@@ -18,31 +18,47 @@ export const Question = (props) => {
     const opt2Votes = question.optionTwo.votes.length
     const totalVotes = opt1Votes + opt2Votes
     return (
-      <div>
+      <div className="dashboard">
         <img src={users[question.author].avatarURL} alt={`avatar for ${users[question.author].name}`} width="50" height="50"/>
         <h1>Would you rather...</h1>
         <form onSubmit={(e) => handleAnswerQuestion(e)}>
-          <input 
-            type="radio" 
-            id="optionOneRadio" 
-            name="option" 
-            disabled={answer ? true : false} 
-            value="optionOne" 
-            onChange={(e) => setSelectedOption(e.target.value)}
-            checked={selectedOption === "optionOne"}
-          />
-          <label htmlFor="optionOneRadio">{question.optionOne.text} ? {answer && `|| ${Math.round((opt1Votes/totalVotes)*100)}% (${opt1Votes})`}</label>
-          <input 
-            type="radio" 
-            id="optionTwoRadio" 
-            name="option" 
-            disabled={answer ? true : false} 
-            value="optionTwo" 
-            onChange={(e) => setSelectedOption(e.target.value)}
-            checked={selectedOption === "optionTwo"}
-          />
-          <label htmlFor="optionTwoRadio">{question.optionTwo.text} ? {answer && `|| ${Math.round((opt2Votes/totalVotes)*100)}% (${opt2Votes})`}</label>
-          <input type="submit" value="Submit" disabled={answer ? true : false}/>
+          <div className="form-group">
+            <input 
+              type="radio" 
+              id="optionOneRadio" 
+              name="option" 
+              disabled={answer ? true : false} 
+              value="optionOne" 
+              checked={selectedOption === "optionOne"}
+              onChange={(e) => setSelectedOption(e.target.value)}
+            />
+            <label htmlFor="optionOneRadio">
+              {question.optionOne.text} ? 
+              {answer && 
+                <span className="statistic">
+                  {`${Math.round((opt1Votes/totalVotes)*100)}% (${opt1Votes} vote${opt1Votes !== 1 ? "s":""})`}
+                </span>}
+            </label>
+          </div>
+          <div className="form-group">
+            <input 
+              type="radio" 
+              id="optionTwoRadio" 
+              name="option" 
+              disabled={answer ? true : false} 
+              value="optionTwo" 
+              onChange={(e) => setSelectedOption(e.target.value)}
+              checked={selectedOption === "optionTwo"}
+            />
+            <label htmlFor="optionTwoRadio">
+              {question.optionTwo.text} ? 
+              {answer && 
+                <span className="statistic">
+                  {`${Math.round((opt2Votes/totalVotes)*100)}% (${opt2Votes} vote${opt2Votes !== 1 ? "s":""})`}
+                </span>}
+            </label>
+          </div>
+          <button type="submit" value="Submit" disabled={answer ? true : false}>Submit</button>
         </form>
       </div>
     )
